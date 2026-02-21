@@ -1,40 +1,69 @@
 body {
-    background: #0a0a0a;
+    background-color: #050505;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: 'Orbitron', sans-serif; /* Futuristic car font */
+    font-family: 'Segoe UI', sans-serif;
 }
 
-.visualizer-container {
+.dashboard {
+    background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #333;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.1);
     text-align: center;
-    border: 2px solid #333;
-    padding: 20px;
-    border-radius: 15px;
-    background: linear-gradient(145deg, #1a1a1a, #000);
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); /* Red car-tail-light glow */
 }
 
-canvas {
-    width: 600px;
-    height: 300px;
+/* New RPM Display Styling */
+.rpm-container {
+    background-color: #000;
+    border: 1px solid #cc0000;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.rpm-container .value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff0000; /* Digital red glow color */
+    display: block;
+}
+
+.rpm-container .unit {
+    font-size: 0.8rem;
+    color: #ccc;
+    display: block;
+    margin-top: -10px;
 }
 
 #playBtn {
-    background: #d32f2f;
-    color: white;
+    margin-top: 20px;
+    background: #cc0000;
+    color: #fff;
     border: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    cursor: pointer;
+    padding: 12px 40px;
+    font-size: 1.2rem;
     font-weight: bold;
-    letter-spacing: 2px;
-    transition: 0.3s;
+    letter-spacing: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #800000;
+    transition: 0.1s;
 }
 
-#playBtn:hover {
-    background: #ff5252;
-    box-shadow: 0 0 15px #ff5252;
+#playBtn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: 200px;
 }
