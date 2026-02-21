@@ -1,0 +1,25 @@
+body {
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    font-family: sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+canvas {
+    border: 1px solid #fff;
+    background-color: #333;
+    display: block;
+    margin-top: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
