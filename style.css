@@ -1,25 +1,40 @@
 body {
-    background-color: #000;
+    background: #0a0a0a;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    color: white;
-    font-family: sans-serif;
+    font-family: 'Orbitron', sans-serif; /* Futuristic car font */
 }
 
-.container {
+.visualizer-container {
     text-align: center;
+    border: 2px solid #333;
+    padding: 20px;
+    border-radius: 15px;
+    background: linear-gradient(145deg, #1a1a1a, #000);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2); /* Red car-tail-light glow */
 }
 
 canvas {
-    border: 1px solid #fff;
-    background-color: #333;
-    display: block;
-    margin-top: 20px;
+    width: 600px;
+    height: 300px;
 }
 
-h1 {
-    margin-bottom: 10px;
+#playBtn {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+#playBtn:hover {
+    background: #ff5252;
+    box-shadow: 0 0 15px #ff5252;
 }
