@@ -1,7 +1,12 @@
-<div class="visualizer-container">
+<div class="dashboard">
+    <div class="rpm-container">
+        <span class="unit">RPM</span>
+        <span id="rpmDisplay" class="value">0</span>
+    </div>
     <canvas id="visualizer"></canvas>
     <div class="controls">
-        <button id="playBtn">START ENGINE</button>
+        <!-- Make sure to replace 'your-audio-file.m4a' with your actual file name -->
+        <audio id="audioSource" src="Recording.m4a" crossorigin="anonymous"></audio>
+        <button id="playBtn">IGNITION</button>
     </div>
-    <audio id="audioSource" src="Recording.m4a"></audio>
 </div>
