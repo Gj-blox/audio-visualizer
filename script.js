@@ -1,46 +1,24 @@
-const audio = document.getElementById('audioSource');
-const btn = document.getElementById('playBtn');
-const canvas = document.getElementById('visualizer');
-const ctx = canvas.getContext('2d');
+// ... (Previous setup code for audio and button)
+const rpmDisplay = document.getElementById('rpmDisplay');
 
-let audioCtx, analyser, source, dataArray, bufferLength;
-
-btn.addEventListener('click', function() {
-    if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        analyser = audioCtx.createAnalyser();
-        source = audioCtx.createMediaElementSource(audio);
-        source.connect(analyser);
-        analyser.connect(audioCtx.destination);
-        
-        analyser.fftSize = 256;
-        bufferLength = analyser.frequencyBinCount;
-        dataArray = new Uint8Array(bufferLength);
-    }
-    
-    if (audio.paused) {
-        audio.play();
-        btn.innerText = "PAUSE ENGINE";
-        draw();
-    } else {
-        audio.pause();
-        btn.innerText = "START ENGINE";
-    }
-});
+// Inside your main function/event listener, initialize audioContext
+// and connect the source/analyser...
 
 function draw() {
+    if (audio.paused) return;
     requestAnimationFrame(draw);
     analyser.getByteFrequencyData(dataArray);
-    
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const barWidth = (canvas.width / bufferLength) * 2.5;
-    let x = 0;
 
-    for (let i = 0; i < bufferLength; i++) {
-        let barHeight = dataArray[i] / 1.5;
-        // Car dashboard red to orange gradient
-        ctx.fillStyle = `rgb(${barHeight + 100}, 50, 50)`;
-        ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
-        x += barWidth + 1;
+    // ... (Visualizer drawing logic)
+
+    // NEW: Calculate average volume and update display
+    let sum = 0;
+    for (let i = 0; i < dataArray.length; i++) {
+        sum += dataArray[i];
     }
+    const averageAmplitude = sum / dataArray.length;
+    // Map 0-255 amplitude to 0-8000 RPM range
+    const rpmValue = Math.round((averageAmplitude / 255) * 8000); 
+    rpmDisplay.textContent = rpmValue;
 }
+
